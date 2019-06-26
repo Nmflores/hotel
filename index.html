@@ -27,10 +27,19 @@
 
     <main class="w3-container">
         <section class="w3-panel w3-container">
+            <div class="w3-bar w3-teal">
+                <a href="" class="w3-btn w3-transparent" >Presidential</a>
+                <a href="" class="w3-btn w3-transparent">Master</a>
+                <a href="" class="w3-btn w3-transparent">Luxe</a>
+                <a href="" class="w3-btn w3-transparent">Double</a>
+                <a href="" class="w3-btn w3-transparent">Single</a>
+            </div>
+
+
             <div ng-repeat="apartamento in apartamentos">
 
                 <div ng-if="apartamento.numero == 1">
-                    <div class="w3-col l12 m12 sm12">
+                    <div class="w3-container " >
                         <div class="w3-display-container">
                             <span class="w3-display-left ">
                                 {{apartamento.numero}}
@@ -45,7 +54,7 @@
                     </div>
                 </div>
                 <div ng-if="apartamento.numero != 1">
-                    <div class="w3-col l2 m3 sm12">
+                    <div class="w3-container " >
                         <div class="w3-display-container altura">
                             <span class="w3-display-topleft ">
                                 {{apartamento.numero}}
@@ -147,8 +156,34 @@
                 </div>
             </div>
         </section>
-        <section id="">
-            <h3 class="w3-center"></h3>
+        <section id="check-in">
+            <h3 class="w3-center">Check-in</h3>
+            <div class="w3-container w3-panel">
+                <div class="w3-panel w3-container"><input type="text" name="" class="w3-input w3-border" placeholder="Enter your name:"></div>
+                <div class="w3-panel w3-container"><label for="datebirth">Date of birth:</label><input type="date" name="" class="w3-input w3-border"> </div> 
+                <div class="w3-panel w3-container"><select name="" class="w3-select"><option value="" ng-repeat="nacionalidade in array_nacionalidades">{{nacionalidade}}</option></select> </div> 
+                <div class="w3-panel w3-container"><label for="checkin">Check-in:</label><input type="date" name="" class="w3-input w3-border"></div>
+                <div class="w3-panel w3-container"><label for="checkout">Check-out:</label><input type="date" name="" class="w3-input w3-border"></div>
+                <div class="w3-panel w3-container"><select name="" class="w3-select"><option value="" ng-repeat="apartamento in apartamentos"  ng-if="apartamento.status == 'Unoccupied'" >
+                   <div> {{apartamento.numero + " - " + apartamento.tipo}}</div>
+                </option></select></div>
+                <div class="w3-panel w3-container"><input type="submit" value="Submit" class="w3-btn w3-btn-block w3-teal"></div>
+
+            </div>
+
+        </section>
+        <section id="check-out">
+            <h3 class="w3-center">Check out</h3>
+         
+                <div ng-repeat="pessoa in pessoas">
+                        <div class="w3-card-2 w3-margin w3-container w3-panel w3-pale-yellow">
+                   <h4 class="w3-center">{{pessoa.nome}}</h4>
+                   <p>{{pessoa.idade}}</p>
+                   <p>{{pessoa.nacionalidade}}</p>
+                   <p>{{pessoa.quarto.numero + " - " + pessoa.quarto.tipo}}</p>
+                   <div class="w3-panel w3-container"><button class="w3-btn w3-red w3-right">Check Out </button></div>
+                </div>
+            </div>
         </section>
     </main>
 </body>

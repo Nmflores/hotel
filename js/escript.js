@@ -197,6 +197,7 @@ angular.module('ux').controller('uxCtrl', ($scope) => {
                 "Vietnamese",	
                 "Costa Rican"
     ];
+    $scope.array_nacionalidades=nacionalidades;
 
     for(let i = 0; i < 30; i++){
         $scope.pessoas.push({
@@ -250,4 +251,127 @@ angular.module('ux').controller('uxCtrl', ($scope) => {
     console.log($scope.pessoas);
     console.log($scope.count_requests);
     console.log($scope.count_reservations);
+
+
+    let tipos_comida=["aroma", 
+    "bagel", 
+    "batter", 
+    "beans", 
+    "beer", 
+    "biscuit", 
+    "bread", 
+    "broth", 
+    "burger", 
+    "butter", 
+    "cake", 
+    "candy", 
+    "caramel", 
+    "caviar", 
+    "cheese", 
+    "chili", 
+    "chocolate", 
+    "cider", 
+    "cobbler", 
+    "cocoa", 
+    "coffee", 
+    "cookie", 
+    "cream", 
+    "croissant", 
+    "crumble", 
+    "cuisine", 
+    "curd", 
+    "dessert", 
+    "dish", 
+    "drink", 
+    "eggs", 
+    "entree", 
+    "filet", 
+    "fish", 
+    "flour", 
+    "foie", 
+    "gras",
+    "food", 
+    "glaze", 
+    "grill", 
+    "hamburger", 
+    "ice", 
+    "juice", 
+    "ketchup", 
+    "kitchen", 
+    "lard", 
+    "liquor", 
+    "margarine", 
+    "marinade", 
+    "mayo", 
+    "mayonnaise", 
+    "meat", 
+    "milk", 
+    "mousse", 
+    "muffin", 
+    "mushroom", 
+    "noodle", 
+    "nut", 
+    "oil", 
+    "olive", 
+    "omelette", 
+    "pan", 
+    "pasta", 
+    "paste", 
+    "pastry", 
+    "pie", 
+    "pizza", 
+    "plate", 
+    "pot", 
+    "poutine", 
+    "pudding", 
+    "raclette", 
+    "recipe", 
+    "rice", 
+    "salad", 
+    "salsa", 
+    "sandwich", 
+    "sauce", 
+    "seasoning", 
+    "skillet", 
+    "soda", 
+    "soup", 
+    "soy", 
+    "spice", 
+    "steak", 
+    "stew", 
+    "syrup", 
+    "tartar", 
+    "taste", 
+    "tea", 
+    "toast", 
+    "vinegar", 
+    "waffle", 
+    "water", 
+    "wheat", 
+    "wine", 
+    "wok", 
+    "yeast", 
+    "yogurt" 
+
+
+    ];
+    $scope.comidas=[];
+    for(let i = 0;i<35;i++){
+        $scope.comidas.push({imagem:'https://image.shutterstock.com/image-photo/healthy-food-clean-eating-selection-260nw-722718082.jpg',
+    tipo:randomizar_lista(tipos_comida),
+    preco:randomizar_decimal(15,100)});
+
+
+    }
+    console.log($scope.comidas);
+    
+    
+    function randomizar_decimal(min, max){
+        return (Math.random() * (max - min) + min );
+    }
+
+    $scope.abrir=function(id){
+        document.querySelector('#'+ id).style.display="block";
+
+    }
 });
