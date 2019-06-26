@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="ux" ng-controller="uxCtrl">
+
+<head>
+    <meta charset="utf-8" />
+
+    <title></title>
+
+    <style>
+        @import "node_modules/w3-css/3/w3.css";
+        @import "css/estilo.css";
+    </style>
+
+    <script src="js/lorem-ipsum-js/src/lorem-ipsum.js"></script>
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="js/escript.js"></script>
+</head>
+
+<body>
+
+    <header class="w3-teal w3-center  w3-container">
+        <hgroup>
+            <h1>{{titulo}}</h1>
+            <h1>{{subtitulo}}</h1>
+        </hgroup>
+    </header>
+
+    <main class="w3-container">
+        <section class="w3-panel w3-container">
+            <div ng-repeat="apartamento in apartamentos">
+
+                <div ng-if="apartamento.numero == 1">
+                    <div class="w3-col l12 m12 sm12">
+                        <div class="w3-display-container">
+                            <span class="w3-display-left ">
+                                {{apartamento.numero}}
+                            </span>
+                            <span class="w3-display-middle w3-text-brown">
+                                <h4>{{apartamento.tipo}}</h4>
+                            </span>
+                            <span class="w3-display-right">
+                                {{apartamento.status}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div ng-if="apartamento.numero != 1">
+                    <div class="w3-col l2 m3 sm12">
+                        <div class="w3-display-container altura">
+                            <span class="w3-display-topleft ">
+                                {{apartamento.numero}}
+                            </span>
+                            <span class="w3-display-bottomleft w3-text-brown">
+                                <h4>{{apartamento.tipo}}</h4>
+                            </span>
+                            <span class="w3-display-bottomright">
+                                {{apartamento.status}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </section>
+        <section class="w3-container">
+            <h3 class="w3-center">Messages</h3>
+
+            <div class="w3-panel w3-container">
+                <input type="search" class="w3-input w3-border" placeholder="Search hotel guest " />
+            </div>
+
+            <div class="w3-row">
+                <div class="w3-border w3-col l6 m6 sm12">
+                    <h4 class="w3-center">Hotel Status</h4>
+                    <h4 class="w3-center w3-text-red">{{count_occupied_rooms}}%</h4>
+                </div>
+
+                <div class="w3-border w3-col l6 m6 sm12">
+                    <h4 class="w3-center">Messages</h4>
+                    <h4 class="w3-center">
+                        <a href="#messages" class="w3-btn w3-red">
+                            New <span class="w3-badge">{{count_messages}}</span>
+                        </a>
+                    </h4>
+                </div>
+            </div>
+            <div class="w3-row">
+                <div class="w3-border w3-col l6 m6 sm12">
+                    <h4 class="w3-center">Avaliable Rooms</h4>
+                    <h4 class="w3-center w3-text-red">{{count_avaliable_rooms}}</h4>
+                </div>
+
+                <div class="w3-border w3-col l6 m6 sm12">
+                    <h4 class="w3-center">Requests</h4>
+                    <h4 class="w3-center">
+                        <a href="#requests" class="w3-btn w3-red">
+                            New <span class="w3-badge">{{count_requests}}</span>
+                        </a>
+                    </h4>
+                </div>
+            </div>
+            <div class="w3-row">
+                <div class="w3-border w3-col l6 m6 sm12">
+                    <h4 class="w3-center">Rooms in maintenance</h4>
+                    <h4 class="w3-center w3-text-red">{{count_maintenance_rooms}}</h4>
+                </div>
+
+                <div class="w3-border w3-col l6 m6 sm12">
+                    <h4 class="w3-center">Reservations</h4>
+                    <h4 class="w3-center w3-text-red">
+                        <a href="#reservation" class="w3-btn w3-red">
+                            New <span class="w3-badge">{{count_reservations}}</span>
+                        </a>
+                    </h4>
+                </div>
+            </div>
+        </section>
+        <section id="messages">
+            <h3 class="w3-center">Messages</h3>
+            <div class="" ng-repeat="mensagem in mensagens">
+                <a href="#" ng-click="chamar('#id'+mensagem.pessoa.nome.length, 'block')">{{mensagem.pessoa.nome}}</a>
+
+                <div class="w3-modal" id="{{'id'+mensagem.pessoa.nome.length}}">
+                    <div class="w3-modal-content">
+                        <div class="w3-display-container" >
+                            <span class="w3-btn w3-white w3-display-topright" ng-click="chamar('#id'+mensagem.pessoa.nome.length, 'none')">&times</span>
+                            <div class="w3-container w3-teal">
+                                <h4 class="w3-center">
+                                    <span class="w3-text-black">Message:</span>
+                                    {{mensagem.pessoa.nome}}
+                                </h4>
+                            </div>
+                            <div class="w3-container w3-panel">
+                                <p class="w3-pale-yellow">{{mensagem.mensagem}}</p>
+                            </div>
+                            <div class="w3-container w3-panel">
+                                <div class="w3-panel">
+                                    <input type="text" placeholder="Enter your message" class="w3-input w3-border" />
+                                </div>
+                                <div class="w3-right">
+                                    <input type="submit" value="Video/Audio Message" class="w3-btn w3-teal" />
+                                    <input type="submit" value="Submit" class="w3-btn w3-teal" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="">
+            <h3 class="w3-center"></h3>
+        </section>
+    </main>
+</body>
+
+</html>
